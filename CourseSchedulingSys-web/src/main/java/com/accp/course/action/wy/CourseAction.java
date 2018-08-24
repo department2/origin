@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.course.biz.wy.CourseBiz;
 import com.accp.course.pojo.Course;
+import com.accp.course.vo.wy.CourseVo;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -18,9 +19,15 @@ public class CourseAction {
 	private CourseBiz biz;
 	
 	@RequestMapping(value="getCourse/{type}/{condition}/{pageNum}/{pageSize}",method = RequestMethod.GET)
-	public PageInfo<Course> queryCourse(@PathVariable String type,@PathVariable String condition,
+	public PageInfo<CourseVo> queryCourse(@PathVariable String type,@PathVariable String condition,
 			@PathVariable Integer pageNum,@PathVariable Integer pageSize){
-		PageInfo<Course> page = biz.findCourse(new Course(),pageNum,pageSize);
+		CourseVo course = new CourseVo();
+		if("period".equals(type)) {
+			course.setName(condition);
+		}else if("courseName".equals(type)) {
+			course.setPeriodId(Integer.parseInt(condition));
+		}
+		PageInfo<CourseVo> page = biz.findCourse(course,pageNum,pageSize);
 		return page;
 	}
 	

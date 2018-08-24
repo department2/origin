@@ -4,8 +4,20 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.course.dao.wy.ICourseDao">
 	
-	<select id="queryAll" resultType="course">
-		select * from course
+	<select id="queryAll" resultType="courseVo">
+		SELECT zid,course.id,id2,periodId,period.`name` periodName,course.`name`,simpleName,parentId,
+		(SELECT `name` FROM course c WHERE c.zid = course.parentId) parentName,
+		courseCount,course.state 
+		FROM course INNER JOIN period ON course.periodId = period.id
+		<where>
+			<if test="course.name != null">
+				and course.name like '%${course.name}%';
+			</if>
+			<if test="course.periodId != null">
+				and periodId = #{course.name}
+			</if>
+			and parentId > 0
+		</where>
 	</select>
 	
 </mapper>

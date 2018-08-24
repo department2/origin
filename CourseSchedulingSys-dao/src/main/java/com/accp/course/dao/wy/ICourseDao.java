@@ -5,9 +5,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.accp.course.pojo.Course;
+import com.accp.course.vo.wy.CourseVo;
 
 public interface ICourseDao {
 
-	public List<Course> queryAll(@Param("course")Course course);
+	public List<CourseVo> queryAll(@Param("course")CourseVo course);
 	
 }

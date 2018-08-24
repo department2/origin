@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.accp.course.biz.wy.CourseBiz;
 import com.accp.course.pojo.Course;
+import com.accp.course.vo.wy.CourseVo;
 import com.github.pagehelper.PageInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,8 +20,8 @@ public class TestCourseBiz {
 	
 	@Test
 	public void testQuery() {
-		PageInfo<Course> page = biz.findCourse(new Course(),1,10);
-		for(Course course : page.getList()) {
+		PageInfo<CourseVo> page = biz.findCourse(new CourseVo(),1,10);
+		for(CourseVo course : page.getList()) {
 			System.out.println(course.getName()); 
 		}
 	}
