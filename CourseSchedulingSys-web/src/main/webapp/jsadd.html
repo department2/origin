@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="layui/css/layui.css" />
+	</head>
+
+	<body>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<label class="layui-form-label">机房编号：</label>
+				<div class="layui-input-block" style="width: 200px;">
+					<input type="text" name="id" required lay-verify="required" placeholder="请输入编号" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">机房名称：</label>
+				<div class="layui-input-block" style="width: 200px;">
+					<input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item" style="width: 200px;">
+				<label class="layui-form-label">楼层：</label>
+				<div class="layui-input-block">
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">1</option>
+						<option value="1">2</option>
+						<option value="2">3</option>
+						<option value="3">4</option>
+						<option value="4">5</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">是否是教室：</label>
+				<div class="layui-input-block">
+					<input type="radio" name="classhouse" value="0" title="是">
+					<input type="radio" name="classhouse" value="1" title="否" checked>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">是否可用：</label>
+				<div class="layui-input-block">
+					<input type="radio" name="sex" value="0" title="可用">
+					<input type="radio" name="sex" value="1" title="不可用" checked>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">状态：</label>
+				<div class="layui-input-block">
+					<input type="checkbox" name="switch" lay-skin="switch">
+				</div>
+			</div>
+			<div class="layui-form-item" style="margin-top: 10px;">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs" id="tj">添加</button>
+					<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs" id="cz">重置</button>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#cz").click(function() {
+				$("[name=id]").val('');
+				$("[name=name]").val('');
+			})
+		});
+	</script>
+
+</html>

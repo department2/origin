@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>教务课时统计</title>
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="css/chenlin_tongji.css" />
+	</head>
+
+	<body>
+		<div id="one">
+			<div id="p1">
+				请选择需要查询的日期：
+				<div class="layui-inline">
+					<!-- 注意：这一层元素并不是必须的 -->
+					<input type="text" class="layui-input" id="time">
+				</div>
+				<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs" id="cha" style="margin-left: 10px;"><i class="layui-icon layui-icon-search">查询</i></button>
+				<span style="margin-left: 10px;">备注:教员课时计算标准：S1、S2【35元/课时】Y2【45元/课时】</span>
+
+			</div>
+			<div id="p2">
+				<div>
+					<i class="layui-icon layui-icon-friends"></i><span>教员课时系统</span>
+				</div>
+			</div>
+			<div id="p4">
+				<div id="but">
+					<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs" id="tab">表格显示</button>
+					<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs" id="tree">树状图显示</button>
+					<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs " id="translation"><i class="layui-icon layui-icon-file">打印</i></button>
+				</div>
+				<div id="p41">
+					<div id="p411">
+						<h1><samp>ACCP</samp>&nbsp;<span id="data">2016年5月</span><span>份</span>&nbsp;<samp>教员课时</samp></h1>
+					</div>
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>教员</th>
+								<th>S1课时</th>
+								<th>S2课时</th>
+								<th>Y2课时</th>
+								<th>总课时</th>
+								<th>确认签字</th>
+								<th>备注</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<tr>
+									<th>1</th>
+									<th>胡杰</th>
+									<th>22</th>
+									<th>25</th>
+									<th>20</th>
+									<th>67</th>
+									<th></th>
+									<th></th>
+								</tr>
+							</tr>
+							<tr>
+								<th>2</th>
+								<th>张三</th>
+								<th>30</th>
+								<th>20</th>
+								<th>18</th>
+								<th>68</th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<th>3</th>
+								<th>李四</th>
+								<th>22</th>
+								<th>30</th>
+								<th>22</th>
+								<th>74</th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<th>4</th>
+								<th>王五</th>
+								<th>20</th>
+								<th>25</th>
+								<th>15</th>
+								<th>70</th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<th>5</th>
+								<th>赵六</th>
+								<th>20</th>
+								<th>24</th>
+								<th></th>
+								<th>44</th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<th>6</th>
+								<th>王良一</th>
+								<th>23</th>
+								<th>26</th>
+								<th></th>
+								<th>49</th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<th>7</th>
+								<th>阁道三</th>
+								<th>22</th>
+								<th>27</th>
+								<th></th>
+								<th>49</th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<th>8</th>
+								<th>王良四</th>
+								<th>25</th>
+								<th>20</th>
+								<th></th>
+								<th>45</th>
+								<th></th>
+								<th></th>
+							</tr>
+
+						</tbody>
+					</table>
+					<div id="Paging"></div>
+				</div>
+				<div id="p42" style=" height: 500px;">
+
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="layui/layui.all.js"></script>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/chenlin_tongji.js"></script>
+	<script>
+	</script>
+
+</html>

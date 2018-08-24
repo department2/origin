@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="layui/css/layui.css" />
+	</head>
+
+	<body>
+		<div class="layuui-container">
+			<div class="layui-row">
+				<div class="layui-col-md8">
+					<div>
+						<div class="layui-carousel" id="test1" style="margin: 10px;">
+							<div carousel-item>
+								<div><img src="img/timg (2).jpg"/></div>
+								<div><img src="img/timg (2).jpg"/></div>
+								<div><img src="img/timg (2).jpg"/></div>
+								<div><img src="img/timg (2).jpg"/></div>
+							</div>
+						</div>
+						<div class="layui-tab" style="border: 1px solid #B2B2B2; margin-top: 15px; margin-left: 10px; width:886px ;">
+							<ul class="layui-tab-title">
+								<li class="layui-this">系统公告</li>
+								<li>最新公告</li>
+								<li>活动公告</li>
+							</ul>
+							<div class="layui-tab-content">
+								<div class="layui-tab-item layui-show">系统公告</div>
+								<div class="layui-tab-item">最新公告</div>
+								<div class="layui-tab-item">活动公告</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md4">
+					<div style="margin-left: 25px; margin-top: 10px;">
+						<div>
+							<div class="panel" style="width: 300px; border: solid #B2B2B2 1px;">
+								<div class="panel-header" style="width: 300px;">
+									<div class="laydate-time" style="background-color: gainsboro; border: solid dodgerblue 1px; color: red;">个人资料</div>
+								</div>
+								<div>
+									<div class="layui-carousel">
+										<div class="layui-row">
+											<div class="layui-col-md8" style="margin: 5px;border: solid black 1px;width:140px; height: 140px;">
+												<img src="img/二维码.png" style="width: 130px; height: 130px;margin:5px ;" />
+											</div>
+											<div class="layui-col-md4">
+												<p style="padding: 12px; font-size: 13px;">姓名：<span id="name">某某</span></p>
+												<p style="padding: 12px; font-size: 13px;">性别：<span id="sex ">男</span></p>
+												<p style="padding: 12px; font-size: 13px; ">职务：<span id="post">教务</span></p>
+											</div>
+										</div>
+										<div style="padding-top:20px ;padding-left: 10px; height: 70px;">
+											<a href="javascript:void(0)" id="update_data" style="padding-left: 2px;">
+												<span class="layui-btn layui-btn-sm layui-btn-radius layui-btn-warm">
+														<i class="layui-icon layui-icon-edit"></i>   
+													<span>修改资料</span>
+												</span>
+											</a>
+											<a href="javascript:void(0)" id="update_pwd" style="padding-left: 2px;">
+												<span class="layui-btn layui-btn-sm layui-btn-radius layui-btn-warm">
+														<i class="layui-icon layui-icon-edit"></i>   
+													<span>修改资料</span>
+												</span>
+											</a>
+											<a href="javascript:void(0)" id="safe_exit" style="padding-left: 2px;">
+												<span class="layui-btn layui-btn-sm layui-btn-radius layui-btn-warm">
+															<i class="layui-icon layui-icon-close"></i>   
+													<span>安全退出</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="margin-left: 25px; margin-top: 10px;  border: solid #B2B2B2 1px;width: 300px;">
+						<div style=" border: solid #B2B2B2 1px;">
+							<div class=" laydate-time " style="background-color: gainsboro; border: solid dodgerblue 1px; color:red; ">合资推广</div>
+						</div>
+						<div style="margin-left: 40px;padding-top: 10px; padding-bottom: 15px;">
+							<img src="img/二维码.png" style="width: 215px; height: 155px;" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<script type=" text/javascript " src="layui/layui.all.js "></script>
+	<script>
+		layui.use('carousel', function() {
+			var carousel = layui.carousel;
+			//建造实例
+			carousel.render({
+				elem: '#test1',
+				width: '100%', //设置容器宽度
+				arrow: 'always' //始终显示箭头
+				//,anim: 'updown' //切换动画方式
+			});
+		});
+	</script>
+</html>

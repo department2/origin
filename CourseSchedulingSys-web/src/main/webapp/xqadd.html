@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="layui/css/layui.css" />
+	</head>
+
+	<body>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<label class="layui-form-label">学期编号：</label>
+				<div class="layui-input-block" style="width: 200px;">
+					<input type="text" name="id" required lay-verify="required" placeholder="请输入编号" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">学期名称：</label>
+				<div class="layui-input-block" style="width: 200px;">
+					<input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item" style="margin-top: 10px;">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs" id="tj">添加</button>
+					<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs" id="cz">重置</button>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#cz").click(function() {
+				$("[name=id]").val('');
+				$("[name=name]").val('');
+			})
+		});
+	</script>
+
+</html>

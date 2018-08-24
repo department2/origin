@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>排课计划</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="layui/css/layui.css" />
+		<style>
+			.header1 {
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			#header2 {
+				margin-top: 10px;
+			}
+			
+			.modal-body input {
+				display: inline;
+				width: 100px;
+				height: 30px;
+			}
+			
+			.layui-colla-title,
+			.header1 {
+				height: 30px;
+				line-height: 30px;
+				background-color: aliceblue;
+				border-top: 1px solid cornflowerblue;
+				border-bottom: 1px solid cornflowerblue;
+			}
+			
+			.layui-tab-item input,
+			#teacherList input {
+				height: 15px;
+				width: 20px;
+			}
+			
+			.btn {
+				background-color: lightseagreen;
+				color: white;
+			}
+			
+			td {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="layui-collapse">
+			<div class="layui-colla-item">
+				<h2 class="layui-colla-title"><span class="layui-icon">&#xe615;</span> 操作</h2>
+				<div id="header2" class="layui-colla-content layui-show" style="padding-left: 10px;">
+					<button class="btn btn-xs"><span class="layui-icon">&#xe642;</span>新建</button>
+					<button class="btn btn-xs" data-toggle="modal" data-target="#ruleListModal">
+						<span class="layui-icon">&#xe621;</span>
+						打开
+					</button>
+					<button class="btn btn-xs">
+						<span class="layui-icon">&#xe681;</span>
+						保存
+					</button>
+					<button class="btn btn-xs">
+						<span class="layui-icon">&#xe605;</span>
+						处理
+					</button>
+					<button class="btn btn-xs" style="float: right;margin-right: 22%;">
+						<span class="layui-icon">&#xe681;</span>
+						生成课表模板
+					</button>
+					<div style="margin-top: 10px;">
+						计划编号&nbsp;<input type="text" class="layui-input" readonly="readonly" style="width:150px;height:20px;display: inline;" />&nbsp;&nbsp; 计划时间&nbsp;
+						<input type="text" class="layui-input" readonly="readonly" style="width:100px;height:20px;display: inline;" />&nbsp;&nbsp; 计划制定人&nbsp;
+						<input type="text" class="layui-input" readonly="readonly" style="width:80px;height:20px;display: inline;" />&nbsp;&nbsp; 状态&nbsp;
+						<input type="text" class="layui-input" readonly="readonly" placeholder="未确认" style="width:80px;height:20px;display: inline;" />&nbsp;&nbsp; 全校无课时间&nbsp;
+						<select name="city" lay-verify="required">
+							<option>星期一</option>
+							<option>星期二</option>
+							<option>星期三</option>
+							<option>星期四</option>
+							<option>星期五</option>
+							<option>星期六</option>
+							<option>星期天</option>
+						</select>&nbsp;&nbsp; 备注&nbsp;
+						<input type="text" class="layui-input" style="width:200px;height:20px;display: inline;" />
+					</div>
+				</div>
+
+			</div>
+
+			<div style="margin-top: 10px;">
+				<div class="layui-tab">
+					<ul class="layui-tab-title">
+						<li class="layui-this">班级计划</li>
+						<li>教师计划</li>
+					</ul>
+					<div class="layui-tab-content">
+						<div class="layui-tab-item layui-show">
+							<div class="layui-show" style="margin-top: 10px;">
+								<p>
+									班级
+									<input type="text" lay-verify="required" readonly="readonly" style="width:60px;height:20px;" /><input class="easyui-textbox" readonly="readonly" style="width:100px;height:20px;" />
+									<button class="btn btn-xs" data-toggle="modal" data-target="#classes" style="height:20px;">...</button> &nbsp;&nbsp; 无课时间&nbsp;
+									<select>
+										<option>星期一</option>
+										<option>星期二</option>
+										<option>星期三</option>
+										<option>星期四</option>
+										<option>星期五</option>
+										<option>星期六</option>
+										<option>星期天</option>
+									</select>&nbsp;&nbsp; 排课次数&nbsp;
+									<select>
+										<option>3</option>
+										<option>4</option>
+									</select>&nbsp;&nbsp; 选择课程&nbsp;
+									<select>
+										<option></option>
+									</select>&nbsp;&nbsp; 优先级&nbsp;
+									<select>
+										<option>最高</option>
+										<option>高</option>
+										<option selected="selected">中</option>
+										<option>低</option>
+										<option>最低</option>
+									</select>(默认：<span style="color: red;">中</span>)&nbsp;&nbsp;
+									<button class="btn btn-xs" style="margin-left: 15%;" onclick="joinPlan()">加入</button>
+									<button class="btn btn-xs">删除</button>
+								</p>
+							</div>
+							<table class="layui-table" lay-size="sm">
+								<thead>
+									<tr>
+										<th style="text-align: center;"><input id="checkAll1" type="checkbox" name="" lay-skin="primary"></th>
+										<th style="text-align: center;">编号</th>
+										<th style="text-align: center;">班级</th>
+										<th style="text-align: center;">无课时间</th>
+										<th style="text-align: center;">排课次数</th>
+										<th style="text-align: center;">优先级</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><input type="checkbox" name="check1" lay-skin="primary"></td>
+										<td>1</td>
+										<td>1601~1612</td>
+										<td>星期六、星期日</td>
+										<td>4</td>
+										<td>高</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" name="check1" lay-skin="primary"></td>
+										<td>2</td>
+										<td>1613、1614、1618</td>
+										<td>星期六、星期日</td>
+										<td>3</td>
+										<td>中</td>
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-show" style="margin-top: 10px;">
+								<p>
+									教师
+									<input type="text" lay-verify="required" readonly="readonly" style="width:60px;height:20px;" /><input class="easyui-textbox" readonly="readonly" style="width:100px;height:20px;" />
+									<button class="btn btn-xs" data-toggle="modal" data-target="#teachers" style="height:20px;">...</button> &nbsp;&nbsp; 无课时间&nbsp;
+									<select>
+										<option>星期一</option>
+										<option>星期二</option>
+										<option>星期三</option>
+										<option>星期四</option>
+										<option>星期五</option>
+										<option>星期六</option>
+										<option>星期天</option>
+									</select>&nbsp;&nbsp;
+									<button class="btn btn-xs" style="margin-left: 44%;" onclick="joinPlan()">加入</button>
+									<button class="btn btn-xs" onclick="removePlan()">删除</button>
+								</p>
+							</div>
+							<table class="layui-table" lay-size="sm" style="">
+								<thead>
+									<tr>
+										<th style="text-align: center;"><input id="checkAll2" type="checkbox" name="" lay-skin="primary"></th>
+										<th style="text-align: center;">教师姓名</th>
+										<th style="text-align: center;">无课时间</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><input type="checkbox" name="check2" lay-skin="primary"></td>
+										<td>叶盛</td>
+										<td>星期六、星期日</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" name="check2" lay-skin="primary"></td>
+										<td>胡杰</td>
+										<td>星期六、星期日</td>
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!--
+        	排课计划模态框 -->
+
+			<div class="modal fade" id="ruleListModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h5 class="modal-title">排课计划</h5>
+						</div>
+						<div class="modal-body">
+							<input type="text" class="layui-input" placeholder="yyyy-MM-dd" id="test1"> 至
+							<input type="text" class="layui-input" placeholder="yyyy-MM-dd" id="test2">
+							<input type="text" class="layui-input" />
+							<button class="btn btn-xs btn-default" data-toggle="modal" data-target="#ruleListModal">
+					<span class="layui-icon">&#xe615;</span>
+						查询
+					</button>
+							<button class="btn btn-xs btn-default">
+						<span class="layui-icon">&#xe605;</span>
+						确定
+					</button>
+							<button class="btn btn-xs btn-default">
+						<span class="layui-icon">&#xe640;</span>
+						删除
+					</button>
+							<table class="layui-table" lay-size="sm">
+								<thead>
+									<tr>
+										<th>编号</th>
+										<th>状态</th>
+										<th>编辑人</th>
+										<th>编辑时间</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+
+								</tbody>
+
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-xs">首页</button>
+							<button class="btn btn-xs">上一页</button>
+							<button class="btn btn-xs">下一页</button>
+							<button class="btn btn-xs">尾页</button>
+							<span>显示0到0 共0条记录</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!--
+        	选择班级模态框
+        -->
+			<div class="modal fade" id="classes" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h5 class="modal-title">选择班级</h5>
+						</div>
+						<div class="modal-body">
+							<input type="radio" style="width: 20px;height:15px" name="choice" value="多选" title="多选" checked>多选
+							<input type="radio" style="width: 20px;height:15px" name="choice" value="连续" title="连续">连续
+							<select name="cla" lay-verify="required">
+								<option>1701</option>
+								<option>1702</option>
+								<option>1703</option>
+								<option>1705</option>
+								<option>1706</option>
+								<option>1707</option>
+								<option>1708</option>
+							</select>-
+							<select name="cla" lay-verify="required">
+								<option>1701</option>
+								<option>1702</option>
+								<option>1703</option>
+								<option>1705</option>
+								<option>1706</option>
+								<option>1707</option>
+								<option>1708</option>
+							</select>&nbsp;&nbsp;&nbsp;
+							<button class="btn btn-xs">
+						<span class="layui-icon">&#xe605;</span>
+						确定
+					</button>
+							<button class="btn btn-xs" style="float: right;margin-right: 200px;">
+						<span class="layui-icon">&#xe605;</span>
+						全选
+					</button>
+							<div class="layui-tab">
+								<ul class="layui-tab-title">
+									<li class="layui-this">S1</li>
+									<li>S2</li>
+									<li>Y2</li>
+								</ul>
+								<div class="layui-tab-content">
+									<div class="layui-tab-item layui-show">
+										<input type="checkbox" name="classes" title="1801" lay-skin="primary">1801
+										<input type="checkbox" name="classes" title="1802" lay-skin="primary">1802
+										<input type="checkbox" name="classes" title="1803" lay-skin="primary">1803
+										<input type="checkbox" name="classes" title="1805" lay-skin="primary">1805
+									</div>
+									<div class="layui-tab-item">
+										<input type="checkbox" name="classes" title="1720" lay-skin="primary">1720
+										<input type="checkbox" name="classes" title="1721" lay-skin="primary">1721
+										<input type="checkbox" name="classes" title="1722" lay-skin="primary">1722
+										<input type="checkbox" name="classes" title="1723" lay-skin="primary">1723
+									</div>
+									<div class="layui-tab-item">
+										<input type="checkbox" name="classes" title="JAVA15" lay-skin="primary">JAVA15
+										<input type="checkbox" name="classes" title="JAVA16" lay-skin="primary">JAVA16
+										<input type="checkbox" name="classes" title=".NET15" lay-skin="primary">NET15
+										<input type="checkbox" name="classes" title=".NET16" lay-skin="primary">NET16
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!--
+        	选择教师模态框
+        -->
+
+			<div class="modal fade" id="teachers" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h5 class="modal-title">选择教师</h5>
+						</div>
+						<div class="modal-body">
+							<input type="radio" style="width: 20px;height:15px" name="choice" value="多选" title="多选" checked>多选
+							<input type="radio" style="width: 20px;height:15px" name="choice" value="连续" title="连续">连续
+							<select name="cla" lay-verify="required">
+								<option>叶盛</option>
+								<option>胡杰</option>
+								<option>陈勇</option>
+								<option>邱威</option>
+								<option>胡尔钢</option>
+								<option>袁福</option>
+								<option>赵乐</option>
+							</select>-
+							<select name="cla" lay-verify="required">
+								<option>叶盛</option>
+								<option>胡杰</option>
+								<option>陈勇</option>
+								<option>邱威</option>
+								<option>胡尔钢</option>
+								<option>袁福</option>
+								<option>赵乐</option>
+							</select>&nbsp;&nbsp;&nbsp;
+							<button class="btn btn-xs" id="true1">
+						<span class="layui-icon">&#xe605;</span>
+						确定
+					</button>
+							<button class="btn btn-xs" style="float: right;margin-right: 200px;">
+						<span class="layui-icon">&#xe605;</span>
+						全选
+					</button>
+							<div id="teacherList" style="border: 1px solid lightgrey;height：200px">
+								<input type="checkbox" name="" title="叶盛" lay-skin="primary">叶盛
+								<input type="checkbox" name="" title="胡杰" lay-skin="primary">胡杰
+								<input type="checkbox" name="" title="袁福" lay-skin="primary">袁福
+								<input type="checkbox" name="" title="胡尔钢" lay-skin="primary">胡尔钢
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<script>
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			//执行一个laydate实例
+			laydate.render({
+				elem: '#test1' //指定元素
+			});
+
+			var laydate2 = layui.laydate;
+
+			//执行一个laydate实例
+			laydate2.render({
+				elem: '#test2' //指定元素
+			});
+
+			layui.use('element', function() {
+				var element = layui.element;
+
+				//…
+			});
+		})
+
+		$(function() {
+			$("#checkAll1").click(function() {
+				var box = document.getElementsByName('check1');
+				for(var i = 0; i < box.length; i++) {
+					box[i].checked = this.checked;
+				}
+
+			})
+			$("#checkAll2").click(function() {
+				var box = document.getElementsByName('check2');
+				for(var i = 0; i < box.length; i++) {
+					box[i].checked = this.checked;
+				}
+
+			})
+
+		});
+
+		function joinPlan() {
+			console.log("add");
+		}
+
+		function removePlan() {
+			console.log("remove");
+		}
+	</script>
+
+</html>

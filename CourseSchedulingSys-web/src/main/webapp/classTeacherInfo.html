@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+
+		<style>
+			.da {
+				margin-top: -30px;
+				height: 70px;
+				display: flex;
+				justify-content: space-between;
+				border: #000000 solid 0px;
+			}
+			
+			.zong {
+				display: flex;
+				justify-content: flex-end;
+				border: #000000 solid 0px;
+			}
+			
+			.zong2 {
+				margin-top: 20px;
+				margin-left: -70px;
+			}
+			
+			.er {
+				width: 300px;
+			}
+			
+			.san {
+				margin-top: -10px;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				flex-wrap: wrap;
+				height: auto;
+			}
+			
+			.yi {
+				height: auto;
+				border: 0px solid gray;
+				display: flex;
+				justify-content: flex-start;
+				margin-top: 10px;
+				/*background-color: #E6E6E6;*/
+			}
+			
+			.zhong {
+				text-align: center;
+				line-height: 40px;
+			}
+			
+			.layui-unselect {
+				width: 70px;
+			}
+			
+			.layui-input-block {
+				margin-left: 0px;
+			}
+			
+			.AAAAA {
+				line-height: 35px;
+				height: 40px;
+				border: 0px solid red;
+				background-color: #B1D2EC
+			}
+			
+			.AOP {
+				line-height: 35px;
+				height: 40px;
+				border: 0px solid red;
+				background-color: #B1D2EC
+			}
+			
+			.WW {
+				margin-left: 50px;
+				margin-top: 30px;
+				display: flex;
+			}
+			
+			.WWW {
+				margin-left: 50px;
+				margin-top: 10px;
+				display: flex;
+				margin-bottom: 20px;
+			}
+			
+			.KKK {
+				height: 40px;
+				line-height: 40px;
+				width: 100px;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+			
+			.layui-form-item .layui-inline {
+				margin-bottom: 5px;
+				margin-right: -10px;
+			}
+			
+			.ZZZ {
+				margin-left: 20px;
+			}
+			
+			.pp {
+				margin-right: 20px;
+				margin-left: -10px;
+				margin-top: 10px;
+			}
+			
+			input[type=checkbox] {
+				width: 1px;
+			}
+			
+			#allChoose {
+				width: 30px;
+			}
+			
+			[name=fy] {
+				width: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layuui-container">
+			<div class="layui-row layui-col-md12">
+				<div class="WWW">
+					<div class="zhong">
+						筛选条件:
+					</div>
+					<div class="KKK" style="">
+						<select name="city" lay-verify="">
+							<option value="">工号</option>
+							<option value="">姓名</option>
+							<option value="">所带班级</option>
+						</select>
+					</div>
+					<div><input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 300px;"> </div>
+					<div><button class="layui-btn ZZZ"><i class="layui-icon" style="color:gold;">&#xe615;</i>查询</button></div>
+					<div><button class="layui-btn ZZZ"><i class="layui-icon" style="color:gold;">&#xe615;</i>清空</button></div>
+				</div>
+			</div>
+			<div class="layui-row layui-col-md12">
+				<div class="da">
+					<div class="zong">
+
+						<div class="yi">
+							<div class="pp" id="zj"><button class="layui-btn layui-btn-xs ZZZ"><i class="layui-icon" style="color:gold;">&#xe654;</i>增加</button></div>
+
+							<div class="pp" id="bj"><button class="layui-btn layui-btn-xs ZZZ"><i class="layui-icon" style="color:gold;">&#xe642;</i>编辑</button></div>
+
+							<div class="pp" id="sc"><button class="layui-btn layui-btn-xs ZZZ" onclick="deletechecklis()"><i class="layui-icon" style="color:gold;">&#xe615;</i>删除</button></div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="layui-row layui-col-md12">
+				<table class="layui-table">
+					<colgroup>
+						<col width="100">
+						<col width="200">
+						<col>
+					</colgroup>
+					<thead>
+						<tr>
+							<th width="7%"><input type="checkbox" name="checkbox" onclick="checkboxed('checkbox')" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+							<th width="18%">工号</th>
+							<th width="16%">姓名</th>
+							<th width="13%">性别</th>
+							<th width="16%">身份证</th>
+							<th width="16%">电话</th>
+							<th width="13%">所带班级</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+							
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbox" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+							<td>001</td>
+							<td>袁愈辉</td>
+							<td>男</td>
+							<td>44446666666666</td>
+							<td>1355555555</td>
+							<td>java15</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="layui-row">
+				<!--<div id="laypage" class="layui-col-md6 layui-col-md-offset1" style="margin: 0 auto;">
+					<span id="spanFirst">首页</span> <span id="spanPre">上一页</span> <input type="button" value="1" name="fy" /> <input type="button" value="2" name="fy" /> <span id="spanNext">下一页</span> <span id="spanLast">尾页</span> 第<span id="spanPageNum"></span>页/共<span id="spanTotalPage"></span>页
+				</div>-->
+				<div id="test100"></div>
+			</div>
+		</div>
+		<!-- 窗体模式框 -->
+		<div id="windowDialog" class="modal fade" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">模块提示</h4>
+					</div>
+					<div class="modal-body"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 消息提示框 -->
+		<div id="alertDialog" class="modal fade" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">系统提示</h4>
+					</div>
+					<div class="modal-body">
+						<h3 class="text-center">message</h3>
+					</div>
+					<div class="modal-footer" style="text-align: center;">
+						<button class="btn btn-info" data-dismiss="modal">确认</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!--<script type="text/javascript" src="js/t3.js"></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+	<!--<script>
+		jQuery("#zj").click(function() {
+			showWindowDialog("添加班主任信息.html", "添加班主任信息");
+		});
+
+		jQuery("#bj").click(function() {
+			showWindowDialog("编辑班主任信息.html", "编辑班主任信息");
+		});
+	</script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+-->
+
+	<script src="js/classTeacher.js"></script>
+	<script src="layui/layui.js"></script>
+	<script src="layui/lay/modules/form.js"></script>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		function checkboxed(objName) {
+			var objNameList = document.getElementsByName(objName);
+			if(null != objNameList) {
+				if(objNameList[0].checked) {
+					for(var i = 0; i < objNameList.length; i++) {
+						objNameList[i].checked = "checked";
+					}
+				} else {
+					for(var i = 0; i < objNameList.length; i++) {
+						objNameList[i].checked = "";
+					}
+				}
+			}
+		}
+
+		function deletechecklis() {
+			var objNameList = jQuery("[type=checkbox]");
+			if(null != objNameList) {
+				for(var i = 1; i < objNameList.length; i++) {
+					if(objNameList[i].checked) {
+						jQuery(objNameList[i]).parent().parent().remove();
+					}
+				}
+			}
+		}
+
+		/*function uncheckboxed(objName) {
+			var objNameList = document.getElementsByName(objName);
+
+			if(null != objNameList) {
+				alert("取消全选操作");
+				for(var i = 0; i < objNameList.length; i++) {
+					objNameList[i].checked = "";
+				}
+			}
+		}*/
+
+		jQuery("#zj").click(function() {
+			showWindowDialog("addClassTeacher.html", "添加班主任信息");
+		});
+
+		jQuery("#bj").click(function() {
+			showWindowDialog("editClassTeacher.html", "编辑班主任信息");
+		});
+
+		layui.use('layer', function() {
+			$(".cha").click(function() {
+				layer.open({
+					type: 1,
+					skin: 'layui-layer-rim', //加上边框
+					area: ['420px', '240px'], //宽高
+					content: '<label>教员简介</label><textarea name="" required lay-verify="required" placeholder="教员简介" class="layui-textarea" disabled></textarea>'
+				});
+			});
+		});
+
+		layui.use('laypage', function() {
+			var laypage = layui.laypage;
+
+			//执行一个laypage实例
+			laypage.render({
+				elem: 'test100' //注意，这里的 test1 是 ID，不用加 # 号
+					,
+				count: 50 //数据总数，从服务端得到
+			});
+		});
+
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			//常规用法
+			laydate.render({
+				elem: '#test1'
+			});
+
+			//国际版
+			laydate.render({
+				elem: '#test1-1',
+				lang: 'en'
+			});
+
+			//年选择器
+			laydate.render({
+				elem: '#test2',
+				type: 'year'
+			});
+
+			//年月选择器
+			laydate.render({
+				elem: '#test3',
+				type: 'month'
+			});
+
+			//时间选择器
+			laydate.render({
+				elem: '#test4',
+				type: 'time'
+			});
+
+			//日期时间选择器
+			laydate.render({
+				elem: '#test5',
+				type: 'datetime'
+			});
+
+			//日期范围
+			laydate.render({
+				elem: '#test6',
+				range: true
+			});
+
+			//年范围
+			laydate.render({
+				elem: '#test7',
+				type: 'year',
+				range: true
+			});
+
+			//年月范围
+			laydate.render({
+				elem: '#test8',
+				type: 'month',
+				range: true
+			});
+
+			//时间范围
+			laydate.render({
+				elem: '#test9',
+				type: 'time',
+				range: true
+			});
+
+			//日期时间范围
+			laydate.render({
+				elem: '#test10',
+				type: 'datetime',
+				range: true
+			});
+
+			//自定义格式
+			laydate.render({
+				elem: '#test11',
+				format: 'yyyy年MM月dd日'
+			});
+			laydate.render({
+				elem: '#test12',
+				format: 'dd/MM/yyyy'
+			});
+			laydate.render({
+				elem: '#test13',
+				format: 'yyyyMMdd'
+			});
+			laydate.render({
+				elem: '#test14',
+				type: 'time',
+				format: 'H点m分'
+			});
+			laydate.render({
+				elem: '#test15',
+				type: 'month',
+				range: '~',
+				format: 'yyyy-MM'
+			});
+			laydate.render({
+				elem: '#test16',
+				type: 'datetime',
+				range: '到',
+				format: 'yyyy年M月d日H时m分s秒'
+			});
+
+			//开启公历节日
+			laydate.render({
+				elem: '#test17',
+				calendar: true
+			});
+
+			//自定义重要日
+			laydate.render({
+				elem: '#test18',
+				mark: {
+					'0-10-14': '生日',
+					'0-12-31': '跨年' //每年的日期
+						,
+					'0-0-10': '工资' //每月某天
+						,
+					'0-0-15': '月中',
+					'2017-8-15': '' //如果为空字符，则默认显示数字+徽章
+						,
+					'2099-10-14': '呵呵'
+				},
+				done: function(value, date) {
+					if(date.year === 2017 && date.month === 8 && date.date === 15) { //点击2017年8月15日，弹出提示语
+						layer.msg('这一天是：中国人民抗日战争胜利72周年');
+					}
+				}
+			});
+
+			//限定可选日期
+			var ins22 = laydate.render({
+				elem: '#test-limit1',
+				min: '2016-10-14',
+				max: '2080-10-14',
+				ready: function() {
+					ins22.hint('日期可选值设定在 <br> 2016-10-14 到 2080-10-14');
+				}
+			});
+
+			//前后若干天可选，这里以7天为例
+			laydate.render({
+				elem: '#test-limit2',
+				min: -7,
+				max: 7
+			});
+
+			//限定可选时间
+			laydate.render({
+				elem: '#test-limit3',
+				type: 'time',
+				min: '09:30:00',
+				max: '17:30:00',
+				btns: ['clear', 'confirm']
+			});
+
+			//同时绑定多个
+			lay('.test-item').each(function() {
+				laydate.render({
+					elem: this,
+					trigger: 'click'
+				});
+			});
+
+			//初始赋值
+			laydate.render({
+				elem: '#test19',
+				value: '1989-10-14',
+				isInitValue: true
+			});
+
+			//选中后的回调
+			laydate.render({
+				elem: '#test20',
+				done: function(value, date) {
+					layer.alert('你选择的日期是：' + value + '<br>获得的对象是' + JSON.stringify(date));
+				}
+			});
+
+			//日期切换的回调
+			laydate.render({
+				elem: '#test21',
+				change: function(value, date) {
+					layer.msg('你选择的日期是：' + value + '<br><br>获得的对象是' + JSON.stringify(date));
+				}
+			});
+			//不出现底部栏
+			laydate.render({
+				elem: '#test22',
+				showBottom: false
+			});
+
+			//只出现确定按钮
+			laydate.render({
+				elem: '#test23',
+				btns: ['confirm']
+			});
+
+			//自定义事件
+			laydate.render({
+				elem: '#test24',
+				trigger: 'mousedown'
+			});
+
+			//点我触发
+			laydate.render({
+				elem: '#test25',
+				eventElem: '#test25-1',
+				trigger: 'click'
+			});
+
+			//双击我触发
+			lay('#test26-1').on('dblclick', function() {
+				laydate.render({
+					elem: '#test26',
+					show: true,
+					closeStop: '#test26-1'
+				});
+			});
+
+			//日期只读
+			laydate.render({
+				elem: '#test27',
+				trigger: 'click'
+			});
+
+			//非input元素
+			laydate.render({
+				elem: '#test28'
+			});
+
+			//墨绿主题
+			laydate.render({
+				elem: '#test29',
+				theme: 'molv'
+			});
+
+			//自定义颜色
+			laydate.render({
+				elem: '#test30',
+				theme: '#393D49'
+			});
+
+			//格子主题
+			laydate.render({
+				elem: '#test31',
+				theme: 'grid'
+			});
+
+			//直接嵌套显示
+			laydate.render({
+				elem: '#test-n1',
+				position: 'static'
+			});
+			laydate.render({
+				elem: '#test-n2',
+				position: 'static',
+				lang: 'en'
+			});
+			laydate.render({
+				elem: '#test-n3',
+				type: 'month',
+				position: 'static'
+			});
+			laydate.render({
+				elem: '#test-n4',
+				type: 'time',
+				position: 'static'
+			});
+		});
+	</script>
+	
+
+</html>

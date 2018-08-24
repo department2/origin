@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>权限管理</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="layui/css/layui.css" media="all">
+	</head>
+
+	<body>
+		<div style="display: flex;align-items: center;height: 40px;margin-left: 20px;">
+			<p style="font-size: 14px;">说明：角色设定并不指定到任何一个模块，不同的模块可以给定一个角色.</p>
+			<div style="margin-left: 50px;" id="an">
+				<a href="javascript:showWindowDialog('e.html','新增角色');">
+					<button class="layui-btn layui-btn-radius layui-btn-sm ZZZ"><i class="layui-icon">&#xe654;</i>添加</button>
+				</a>
+				<button class="layui-btn layui-btn-radius layui-btn-sm ZZZ" id="update"><i class="layui-icon">&#xe642;</i>编辑</button>
+				<button class='layui-btn layui-btn-radius layui-btn-sm ZZZ' id='bc' style="display: none;"><i class='layui-icon'>&#xe681;</i>保存</button>
+				<button class="layui-btn layui-btn-radius layui-btn-sm ZZZ" id="del"><i class="layui-icon">&#xe640;</i>刪除</button>
+			</div>
+		</div>
+		<div style="display: flex;" id="uss">
+			<div style="display: flex;flex-direction: column;margin-left: 50px;cursor: pointer;color: brown;" name="us">
+				<i class="layui-icon layui-icon-username" style="font-size: 40px;"></i>
+				<span>管理员</span>
+			</div>
+			<div style="display: flex;flex-direction: column;margin-left: 50px;cursor: pointer;" name="us">
+				<i class="layui-icon layui-icon-username" style="font-size: 40px;"></i>
+				<span>教务</span>
+			</div>
+			<div style="display: flex;flex-direction: column;margin-left: 50px;cursor: pointer;" name="us">
+				<i class="layui-icon layui-icon-username" style="font-size: 40px;"></i>
+				<span>班主任</span>
+			</div>
+			<div style="display: flex;flex-direction: column;margin-left: 50px;cursor: pointer;" name="us">
+				<i class="layui-icon layui-icon-username" style="font-size: 40px;"></i>
+				<span>教员</span>
+			</div>
+		</div>
+		<div class="layui-tab layui-tab-card">
+			<ul class="layui-tab-title">
+				<li class="layui-this" lay-id="yhqx" onclick="shows()">用户权限</li>
+				<li lay-id="yhgl" onclick="hides()">用户管理</li>
+			</ul>
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show">
+					<div>
+						<a href="javascript:showWindowDialog('editFunction.html','权限设置');">
+							<button class="layui-btn layui-btn-sm ZZZ"><i class="layui-icon">&#xe656;</i>设置</button>
+						</a>
+						<button class="layui-btn layui-btn-sm ZZZ" id="qxdel"><i class="layui-icon">&#xe640;</i>删除</button>
+					</div>
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th width='20px'>
+									<input type='checkbox' id="qxallbox">
+								</th>
+								<th>模块编号</th>
+								<th>模块名称</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<input type='checkbox' name="qxbox">
+								</td>
+								<td>XY-855</td>
+								<td>学员信息管理</td>
+							</tr>
+							<tr>
+								<td>
+									<input type='checkbox' name="qxbox">
+								</td>
+								<td>XY-855</td>
+								<td>学员信息管理</td>
+							</tr>
+							<tr>
+								<td>
+									<input type='checkbox' name="qxbox">
+								</td>
+								<td>XY-855</td>
+								<td>学员信息管理</td>
+							</tr>
+							<tr>
+								<td>
+									<input type='checkbox' name="qxbox">
+								</td>
+								<td>XY-855</td>
+								<td>学员信息管理</td>
+							</tr>
+							<tr>
+								<td>
+									<input type='checkbox' name="qxbox">
+								</td>
+								<td>XY-855</td>
+								<td>学员信息管理</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="layui-tab-item">
+					<div style="margin-left: 20px;">
+						<a href="javascript:showWindowDialog('t.html','添加用户');">
+							<button class="layui-btn layui-btn-sm ZZZ"><i class="layui-icon">&#xe654;</i>添加</button>
+						</a>
+						<button class="layui-btn layui-btn-sm ZZZ"><i class="layui-icon">&#xe642;</i>编辑</button>
+						<button class="layui-btn layui-btn-sm ZZZ" id="delus"><i class="layui-icon">&#xe640;</i>刪除</button>
+					</div>
+					<table class="layui-table">
+						<colgroup>
+							<col width="150">
+								<col width="200">
+									<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th>
+									<input type="checkbox" id="usallbox" />
+								</th>
+								<th>昵称</th>
+								<th>加入时间</th>
+								<th>签名</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<input type="checkbox" name="usbox" />
+								</td>
+								<td>贤心</td>
+								<td>2016-11-29</td>
+								<td>人生就像是一场修行</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" name="usbox" />
+								</td>
+								<td>许闲心</td>
+								<td>2016-11-28</td>
+								<td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div id="windowDialog" class="modal fade" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">模块提示</h4>
+					</div>
+					<div class="modal-body"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="layui/layui.all.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/t3.js"></script>
+		<script>
+			//用户全选
+			$("#qxallbox").click(function() {
+					var zt = $("#qxallbox").prop("checked");
+					$("[name=qxbox]").attr("checked", zt);
+			});
+			//权限删除
+			$("#qxdel").click(function(){
+				var arrus = $("[name=qxbox]:checked").parents("tr");
+				$.each(arrus, function(i, obj) {
+					if (obj != "true") {
+						$(obj).empty();
+					}
+				});
+			});
+			//显示
+			function shows() {
+				$("#an").show();
+			}
+			//隐藏
+			function hides() {
+				$("#an").hide();
+			}
+			//用户全选
+			$("#usallbox").click(function() {
+					var zt = $("#usallbox").prop("checked");
+					$("[name=usbox]").attr("checked", zt);
+			});
+				//删除用户
+			$("#delus").click(function() {
+				var arrus = $("[name=usbox]:checked").parents("tr");
+				$("#usallbox").attr("checked", "");
+				$.each(arrus, function(i, obj) {
+					if (obj != "true") {
+						$(obj).empty();
+					}
+				});
+			});
+			//编辑
+			$("#update").click(function() {
+				$(this).hide();
+				$("[name=box]").removeAttr("disabled");
+				$("#bc").show();
+			});
+			//保存
+			$("#bc").click(function() {
+				$(this).hide();
+				$("[name=box]").attr("disabled", "true");
+				$("#update").show();
+				layer.alert('保存成功！', {
+					icon: 1
+				});
+			});
+			//删除
+			$("#del").click(function() {
+				var th = $("#uss").find('[d-name=thisus]').css('color', 'brown');
+				$(th).hide();
+			});
+			//渲染
+			$("[name=us]").click(function() {
+					$("[name=us]").css("color", "#000000");
+					$("[name=us]").css("d-name", "");
+					$(this).attr("d-name", "thisus");
+					$(this).css("color", "brown");
+				})
+				//选项卡
+			layui.use('element', function() {
+				var element = layui.element;
+				//获取hash来切换选项卡，假设当前地址的hash为lay-id对应的值
+				var layid = location.hash.replace(/^#test1=/, '');
+				element.tabChange('test1', layid); //假设当前地址为：http://a.com#test1=222，那么选项卡会自动切换到“发送消息”这一项
+				//监听Tab切换，以改变地址hash值
+				element.on('tab(test1)', function() {
+					location.hash = 'test1=' + this.getAttribute('lay-id');
+				});
+			});
+		</script>
+	</body>
+
+</html>

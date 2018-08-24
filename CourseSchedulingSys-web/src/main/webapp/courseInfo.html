@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>课程信息管理</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+		<style>
+			.da {
+				margin-top: -30px;
+				height: 70px;
+				display: flex;
+				justify-content: space-between;
+				border: #000000 solid 0px;
+			}
+			
+			.zong {
+				display: flex;
+				justify-content: flex-end;
+				border: #000000 solid 0px;
+			}
+			
+			.zong2 {
+				margin-top: 20px;
+				margin-left: -70px;
+			}
+			
+			.er {
+				width: 300px;
+			}
+			
+			.san {
+				margin-top: -10px;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				flex-wrap: wrap;
+				height: auto;
+			}
+			
+			.yi {
+				height: auto;
+				border: 0px solid gray;
+				display: flex;
+				justify-content: flex-start;
+				margin-top: 30px;
+			}
+			
+			.zhong {
+				text-align: center;
+				line-height: 40px;
+			}
+			
+			.AAAAA {
+				line-height: 35px;
+				height: 40px;
+				border: 0px solid red;
+				background-color: #B1D2EC
+			}
+			
+			.AOP {
+				line-height: 35px;
+				height: 40px;
+				border: 0px solid red;
+				background-color: #B1D2EC
+			}
+			
+			.WW {
+				margin-left: 50px;
+				margin-top: 30px;
+				display: flex;
+			}
+			
+			.WWW {
+				margin-left: 50px;
+				margin-top: 10px;
+				display: flex;
+				margin-bottom: 20px;
+			}
+			
+			.KKK {
+				height: 40px;
+				line-height: 40px;
+				width: 40px;
+				margin-left: 20px;
+			}
+			
+			.layui-form-item .layui-inline {
+				margin-bottom: 5px;
+				margin-right: -10px;
+			}
+			
+			.layui-table td,
+			.layui-table th {
+				line-height: 10px;
+			}
+			
+			.ZZZ {
+				margin-left: 20px;
+			}
+			
+			.pp {
+				margin-right: 20px;
+				margin-left: -10px;
+				margin-top: 10px;
+			}
+			
+			.zhong-1 {
+				margin-left: 10px;
+			}
+			
+			.juzhong {
+				margin-left: 290px;
+				margin-top: -33px;
+			}
+		
+			.layui-input {
+				height: 28px;
+				margin-top: 5px;
+			}
+			.cha:hover {
+				cursor: pointer;
+				color: cornflowerblue;
+			}
+			.kuan {
+				margin-right: 340px;
+				margin-top: -33px;
+				margin-left: 90px;
+			}
+			.layui-form{
+				display: flex;
+			}
+			.layui-input-block{
+				margin-left: 10px;
+			}
+			.layui-unselect{
+				width: 100px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="AAAAA">
+			<i class="layui-icon" style="color: #007DDB;">&#xe66f;</i> 课程信息管理
+		</div>
+
+		<div class="da">
+			<div class="zong">
+
+				<div class="yi">
+					<div class="pp">
+						<a href="javascript:showWindowDialog('editCourse.html','添加学员信息');">
+							<button class="layui-btn layui-btn-xs ZZZ"><i class="layui-icon" style="color:gold;">&#xe654;</i>增加</button>
+						</a>
+					</div>
+
+					<div class="pp">
+						<a href="javascript:showWindowDialog('editCourse.html','编辑学员信息');">
+							<button class="layui-btn layui-btn-xs ZZZ"><i class="layui-icon" style="color:gold;">&#xe642;</i>編輯</button>
+						</a>
+					</div>
+
+					<div class="pp">
+						<button class="layui-btn layui-btn-xs ZZZ" id="shan"><i class="layui-icon" style="color:gold;">&#xe640;</i>刪除</button>
+					</div>
+
+					<div class="zhong">
+						筛选条件:
+					</div>  
+					<form class="layui-form" action="" method="get">
+						<div class="layui-form-item">
+						    <div class="layui-input-block">
+						      	<select name="selectCondition" lay-filter='select1' style="width: 50px;">
+							  		<option value="period">年级</option>
+									<option value="courseName">课程名</option>
+							 	</select>
+						    </div>
+					  	</div>
+					  	<div class="layui-form-item" id='periodArea'>
+						    <div class="layui-input-block">
+						      	<select name="period" lay-filter="select2" style="width: 50px;">
+									<option value="1">S1</option>
+									<option value="2">S2</option>
+									<option value="3">Y2</option>
+								</select>
+						    </div>
+					  	</div>
+					  	<div class="layui-form-item">
+						    <div class="layui-input-block" style="display: flex;">
+						      	<input type="text" id="courseNameBox" placeholder="请输入搜索内容..." autocomplete="off" class="layui-input" style="width: 300px;display: none;">
+						      	<a class="dian" href="#"><i class="layui-icon" style="color:skyblue; font-size: 20px;position:relative;top:9px;left:2px;">&#xe615;</i></a>
+						    </div>
+					  	</div>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="san">
+			<table class="layui-table">
+				<colgroup>
+					<col width="200">
+					<col width="200">
+					<col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th width="10%"><input type="checkbox" lay-skin="primary" id="quan"></th>
+						<th width="25%">课程名</th>
+						<th width="15%">简称</th>
+						<th width="30%">所属教材</th>
+						<th width="10%">所属年级</th>
+						<th width="10%">课时</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+					<tr>
+						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
+						<td>初识CSS3</td>
+						<td>HTML+CSS</td>
+						<td>使用HTML语言和CSS开发商业站点</td>
+						<td>S1</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
+						<td>用SQL语句操作数据</td>
+						<td>C#+SQL Server</td>
+						<td>C#语言与数据库基础</td>
+						<td>S1</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
+						<td>变量、数据类型和运算符</td>
+						<td>Logic Java</td>
+						<td>使用Java理解程序逻辑</td>
+						<td>S1</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
+						<td>循环结构进阶</td>
+						<td>Logic Java</td>
+						<td>使用Java理解程序逻辑</td>
+						<td>S1</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div id="test100"></div>
+		</div>
+
+		<div id="windowDialog" class="modal fade" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">模块提示</h4>
+					</div>
+					<div class="modal-body"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="layui/layui.js"></script>
+	<script src="layui/lay/modules/form.js"></script>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/t3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		jQuery(function() {
+
+			//全选按钮
+			$("#quan").click(function() {
+				var xuan = $("[name=xuan]");
+				for(var i in xuan) {
+					xuan[i].checked = this.checked;
+				}
+			});
+
+			//删除操作
+			$("#shan").click(function() {
+				var arr = $("[name=xuan]:checked").parents("tr");
+				arr.remove();
+				$("#quan").attr("checked", false);
+			});
+			
+
+			layui.use(['laypage','form'], function() {
+				var laypage = layui.laypage;
+				var form = layui.form;
+				
+				//执行一个laypage实例
+				laypage.render({
+					elem: 'test100' //注意，这里的 test1 是 ID，不用加 # 号
+						,
+					count: 50 //数据总数，从服务端得到
+				});
+				
+				form.on('select(select1)', function(data){
+				  console.log(data.elem); //得到select原始DOM对象
+				  console.log(data.value); //得到被选中的值
+				  console.log(data.othis); //得到美化后的DOM对象
+				  if(data.value == 'period'){
+				  	$("#periodArea").show();
+				  	$("#courseNameBox").hide();
+				  }else{
+				  	$("#periodArea").hide();
+				  	$("#courseNameBox").show();
+				  }
+				}); 
+			});
+			
+			  
+
+		});
+	</script>
+
+</html>
