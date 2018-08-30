@@ -37,9 +37,5 @@
 			</dataSource>
 		</environment>
 	</environments>
-	
-	<mappers>
-	    <mapper resource="mapping/utilMapper.xml"/>
-	</mappers>
 
 </configuration>
