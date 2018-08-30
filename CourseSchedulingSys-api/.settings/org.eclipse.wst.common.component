@@ -10,6 +10,9 @@
         <dependent-module archiveName="CourseSchedulingSys-dao-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CourseSchedulingSys-dao/CourseSchedulingSys-dao">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="CourseSchedulingSys-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CourseSchedulingSys-common/CourseSchedulingSys-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/CourseSchedulingSys-api/target/classes"/>
         <property name="context-root" value="course-api"/>
     </wb-module>

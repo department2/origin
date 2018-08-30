@@ -6,23 +6,6 @@
 
 <configuration>
 	
-	<!-- 自定义类型别名 -->
-	<typeAliases>
-	    <!-- 默认别名:类名小写 -->
-		<package name="com.accp.course.pojo" />
-		<package name="com.accp.course.vo" />
-	</typeAliases>
-	
-	<!-- 分页插件 -->
-	<plugins>
-		<plugin interceptor="com.github.pagehelper.PageHelper">
-			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库 -->
-			<property name="dialect" value="mysql" />
-			<!-- 设置为true时，使用RowBounds分页会进行count查询 -->
-			<property name="rowBoundsWithCount" value="true" />
-		</plugin>
-	</plugins>
-	
 	<environments default="MySqlEnv">
 		<environment id="MySqlEnv">
 			<!-- 事务管理 -->
@@ -39,7 +22,7 @@
 	</environments>
 	
 	<mappers>
-	    <mapper resource="mapping/utilMapper.xml"/>
+	    <mapper resource="utilMapper.xml"/>
 	</mappers>
 
 </configuration>

@@ -114,27 +114,32 @@
 				margin-left: 290px;
 				margin-top: -33px;
 			}
-		
+			
 			.layui-input {
 				height: 28px;
 				margin-top: 5px;
 			}
+			
 			.cha:hover {
 				cursor: pointer;
 				color: cornflowerblue;
 			}
+			
 			.kuan {
 				margin-right: 340px;
 				margin-top: -33px;
 				margin-left: 90px;
 			}
-			.layui-form{
+			
+			.layui-form {
 				display: flex;
 			}
-			.layui-input-block{
+			
+			.layui-input-block {
 				margin-left: 10px;
 			}
-			.layui-unselect{
+			
+			.layui-unselect {
 				width: 100px;
 				text-align: center;
 			}
@@ -156,52 +161,48 @@
 							<button class="layui-btn layui-btn-xs ZZZ"><i class="layui-icon" style="color:gold;">&#xe654;</i>增加</button>
 						</a>
 					</div>
-
 					<div class="pp">
 						<a href="javascript:showWindowDialog('editCourse.html','编辑学员信息');">
 							<button class="layui-btn layui-btn-xs ZZZ"><i class="layui-icon" style="color:gold;">&#xe642;</i>編輯</button>
 						</a>
 					</div>
-
 					<div class="pp">
 						<button class="layui-btn layui-btn-xs ZZZ" id="shan"><i class="layui-icon" style="color:gold;">&#xe640;</i>刪除</button>
 					</div>
-
 					<div class="zhong">
 						筛选条件:
-					</div>  
+					</div>
 					<form class="layui-form" action="" method="get">
 						<div class="layui-form-item">
-						    <div class="layui-input-block">
-						      	<select name="selectCondition" lay-filter='select1' style="width: 50px;">
-							  		<option value="period">年级</option>
+							<div class="layui-input-block">
+								<select name="selectCondition" lay-filter='select1' style="width: 50px;">
+									<option value="period">年级</option>
 									<option value="courseName">课程名</option>
-							 	</select>
-						    </div>
-					  	</div>
-					  	<div class="layui-form-item" id='periodArea'>
-						    <div class="layui-input-block">
-						      	<select name="period" lay-filter="select2" style="width: 50px;">
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item" id='periodArea'>
+							<div class="layui-input-block">
+								<select name="period" lay-filter="select2" style="width: 50px;">
+									<option value="0">全部</option>
 									<option value="1">S1</option>
 									<option value="2">S2</option>
 									<option value="3">Y2</option>
 								</select>
-						    </div>
-					  	</div>
-					  	<div class="layui-form-item">
-						    <div class="layui-input-block" style="display: flex;">
-						      	<input type="text" id="courseNameBox" placeholder="请输入搜索内容..." autocomplete="off" class="layui-input" style="width: 300px;display: none;">
-						      	<a class="dian" href="#"><i class="layui-icon" style="color:skyblue; font-size: 20px;position:relative;top:9px;left:2px;">&#xe615;</i></a>
-						    </div>
-					  	</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-input-block" style="display: flex;">
+								<input type="text" id="courseNameBox" placeholder="请输入搜索内容..." autocomplete="off" class="layui-input" style="width: 300px;display: none;">
+								<a class="dian" href="#"><i class="layui-icon" style="color:skyblue; font-size: 20px;position:relative;top:9px;left:2px;">&#xe615;</i></a>
+							</div>
+						</div>
 					</form>
 				</div>
-
 			</div>
-
 		</div>
 
-		<div class="san">
+		<div class="san" id="vmt">
 			<table class="layui-table">
 				<colgroup>
 					<col width="200">
@@ -219,37 +220,13 @@
 					</tr>
 				</thead>
 				<tbody id="tbody">
-					<tr>
+					<tr v-for="(temp,index) in courses">
 						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
-						<td>初识CSS3</td>
-						<td>HTML+CSS</td>
-						<td>使用HTML语言和CSS开发商业站点</td>
-						<td>S1</td>
-						<td>4</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
-						<td>用SQL语句操作数据</td>
-						<td>C#+SQL Server</td>
-						<td>C#语言与数据库基础</td>
-						<td>S1</td>
-						<td>4</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
-						<td>变量、数据类型和运算符</td>
-						<td>Logic Java</td>
-						<td>使用Java理解程序逻辑</td>
-						<td>S1</td>
-						<td>4</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" lay-skin="primary" name="xuan"></td>
-						<td>循环结构进阶</td>
-						<td>Logic Java</td>
-						<td>使用Java理解程序逻辑</td>
-						<td>S1</td>
-						<td>4</td>
+						<td v-text="temp.name">初识CSS3</td>
+						<td v-text="temp.simpleName">HTML+CSS</td>
+						<td v-text="temp.parentName">使用HTML语言和CSS开发商业站点</td>
+						<td v-text="temp.periodName">S1</td>
+						<td v-text="temp.courseCount">4</td>
 					</tr>
 				</tbody>
 			</table>
@@ -274,8 +251,25 @@
 	<script src="js/jquery-1.12.4.js"></script>
 	<script src="js/t3.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/vue.js"></script>
 	<script>
+		var totalCount;
+		var page;
 		jQuery(function() {
+
+			var vm = new Vue({
+				el: "#vmt",
+				data: {
+					courses: []
+				},
+				created: function(e) {
+					var vm = this;
+					jQuery.getJSON("http://localhost:8080/course/courses/getCourse/null/1/1/10", function(data) {
+						vm.courses = data.list;
+						totalCount = data.total;
+					});
+				}
+			});
 
 			//全选按钮
 			$("#quan").click(function() {
@@ -290,35 +284,77 @@
 				var arr = $("[name=xuan]:checked").parents("tr");
 				arr.remove();
 				$("#quan").attr("checked", false);
+				getPageData(1, 10);
 			});
-			
 
-			layui.use(['laypage','form'], function() {
+			layui.use(['form','laypage'], function() {
 				var laypage = layui.laypage;
 				var form = layui.form;
-				
+
 				//执行一个laypage实例
 				laypage.render({
-					elem: 'test100' //注意，这里的 test1 是 ID，不用加 # 号
-						,
-					count: 50 //数据总数，从服务端得到
+					elem: 'test100',
+					count: totalCount,
+					limit: 10,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+					jump: function(obj, first) {
+						getPageData(obj.curr, obj.limit);
+					}
 				});
-				
-				form.on('select(select1)', function(data){
-				  console.log(data.elem); //得到select原始DOM对象
-				  console.log(data.value); //得到被选中的值
-				  console.log(data.othis); //得到美化后的DOM对象
-				  if(data.value == 'period'){
-				  	$("#periodArea").show();
-				  	$("#courseNameBox").hide();
-				  }else{
-				  	$("#periodArea").hide();
-				  	$("#courseNameBox").show();
-				  }
-				}); 
+
+				form.on('select(select1)', function(data) {
+					console.log(data.elem); //得到select原始DOM对象
+					console.log(data.value); //得到被选中的值
+					console.log(data.othis); //得到美化后的DOM对象
+					if(data.value == 'period') {
+						$("#periodArea").show();
+						$("#courseNameBox").hide();
+					} else {
+						$("#periodArea").hide();
+						$("#courseNameBox").show();
+					}
+				});
 			});
-			
-			  
+
+			jQuery(".dian").click(function(e) {
+				getPageData(1, 10);
+			});
+
+			function getPageData(pageNum, pageSize) {
+				var type = $("[name='selectCondition']").val();
+				var condition = null;
+				if(type == "period") {
+					condition = $("[name='period']").val();
+				} else if(type == "courseName") {
+					condition = $("#courseNameBox").val();
+					if(condition == "") {
+						condition = "null";
+					}
+				}
+				jQuery.getJSON("http://localhost:8080/course/courses/getCourse/" + type + "/" + condition + "/" + pageNum + "/" + pageSize, function(data) {
+					vm.courses = data.list;
+					paged(data);
+				});
+			}
+
+			function paged(data) {
+				layui.use('laypage', function() {
+					var laypage = layui.laypage;
+					//执行一个laypage实例
+					laypage.render({
+						elem: 'test100',
+						count: data.total,
+						limit: 10,
+						curr:data.pageNum,
+						layout: ['count', 'prev', 'page', 'next', 'skip'],
+						jump: function(obj, first) {
+							if(!first){
+								getPageData(obj.curr, obj.limit);
+							}
+						}
+					});
+				});
+			}
 
 		});
 	</script>

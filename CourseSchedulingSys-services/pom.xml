@@ -80,6 +80,11 @@
 			<artifactId>CourseSchedulingSys-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.accp</groupId>
+			<artifactId>CourseSchedulingSys-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
   </dependencies>
   
 </project>

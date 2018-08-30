@@ -11,10 +11,10 @@
 		FROM course INNER JOIN period ON course.periodId = period.id
 		<where>
 			<if test="course.name != null">
-				and course.name like '%${course.name}%';
+				and course.name like '%${course.name}%'
 			</if>
 			<if test="course.periodId != null">
-				and periodId = #{course.name}
+				and periodId = #{course.periodId}
 			</if>
 			and parentId > 0
 		</where>

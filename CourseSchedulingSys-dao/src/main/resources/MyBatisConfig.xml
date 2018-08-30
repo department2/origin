@@ -38,8 +38,8 @@
 		</environment>
 	</environments>
 	
-	<!-- <mappers>
-	    <mapper resource="mapping/wy_CourseMapper.xml"/>
-	</mappers>  -->
+	<mappers>
+	    <mapper resource="mapping/utilMapper.xml"/>
+	</mappers>
 
 </configuration>

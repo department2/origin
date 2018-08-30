@@ -17,18 +17,18 @@ public class CourseAction {
 
 	@Autowired
 	private CourseBiz biz;
-	
-	@RequestMapping(value="getCourse/{type}/{condition}/{pageNum}/{pageSize}",method = RequestMethod.GET)
-	public PageInfo<CourseVo> queryCourse(@PathVariable String type,@PathVariable String condition,
-			@PathVariable Integer pageNum,@PathVariable Integer pageSize){
+
+	@RequestMapping(value = "getCourse/{type}/{condition}/{pageNum}/{pageSize}", method = RequestMethod.GET)
+	public PageInfo<CourseVo> queryCourse(@PathVariable String type, @PathVariable String condition,
+			@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
 		CourseVo course = new CourseVo();
-		if("period".equals(type)) {
+		if ("courseName".equals(type) && !"null".equals(condition)) {
 			course.setName(condition);
-		}else if("courseName".equals(type)) {
+		} else if ("period".equals(type) && Integer.parseInt(condition) > 0) {
 			course.setPeriodId(Integer.parseInt(condition));
 		}
-		PageInfo<CourseVo> page = biz.findCourse(course,pageNum,pageSize);
+		PageInfo<CourseVo> page = biz.findCourse(course, pageNum, pageSize);
 		return page;
 	}
-	
+
 }
