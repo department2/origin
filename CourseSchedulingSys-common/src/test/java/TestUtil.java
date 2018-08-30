@@ -11,7 +11,7 @@ public class TestUtil {
 	@Test
 	public void testGetKey() {
 		String key = GetNaturalPrimaryKeyUtil.getKey("student");
-		System.out.println(key);
+		System.out.println(key); 
 	}
 	
 	
